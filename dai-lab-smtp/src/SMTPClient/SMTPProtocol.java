@@ -23,7 +23,7 @@ public class SMTPProtocol {
             }
 
             sendFromToSMTP(out, in, "imposteur@gmail.com", "juju@gmail.com");
-            sendContent(out, in, "shakira@gmail.com", "juju@gmail.com", new Date(), "subject", "content");
+            sendContent(out, in, "shakira@gmail.com", "juju@gmail.com", "April 1st, 2021", "shasha", "hello im shakira");
 
             quit(out, in);
         } catch (IOException e) {
@@ -68,19 +68,20 @@ public class SMTPProtocol {
         }
     }
 
-    private void sendContent(BufferedWriter out, BufferedReader in, String from, String to, Date date, String subject,
+    private void sendContent(BufferedWriter out, BufferedReader in, String from, String to, String date, String subject,
                              String content) throws IOException {
         out.write("data\r\n");
-//        if (!in.readLine().contains("354")) {
-////            throw "error";
-//            System.out.println("error in data");
-//            return;
-//        }
+        out.flush();
+        if (!in.readLine().contains("354")) {
+//            throw "error";
+            System.out.println("error in data");
+            return;
+        }
         out.write("From: <" + from + ">\r\n");
         out.write("To: <" + to + ">\r\n");
         out.write("Date: " + date + "\r\n");
         out.write("Subject: " + subject + "\r\n");
-        out.write(content + "\r\n");
+        out.write("\r\n" + content + "\r\n");
         out.write("\r\n.\r\n");
         out.flush();
 //        if (!in.readLine().contains("250")) {
