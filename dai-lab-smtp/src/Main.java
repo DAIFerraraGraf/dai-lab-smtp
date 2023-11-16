@@ -9,6 +9,5 @@ public class Main {
         for (String email : emails) {
             System.out.println(email);
         }
-
     }
 }
