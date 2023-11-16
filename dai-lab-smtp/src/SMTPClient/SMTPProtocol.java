@@ -3,13 +3,13 @@ package SMTPClient;
 import java.io.*;
 import java.net.*;
 import java.nio.charset.StandardCharsets;
-import java.util.Date;
+import java.util.List;
 
 public class SMTPProtocol {
     private final int SERVER_PORT = 1025;
     private final String SERVER_ADDRESS = "0.0.0.0";
 
-    public void send() {
+    public void sendEmail(List<Group> groups, List<Message> messages) {
 
         try (Socket socket = new Socket(SERVER_ADDRESS, SERVER_PORT);
              var in = new BufferedReader(new InputStreamReader(socket.getInputStream(), StandardCharsets.UTF_8));
