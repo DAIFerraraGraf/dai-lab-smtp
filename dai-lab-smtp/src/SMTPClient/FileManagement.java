@@ -7,24 +7,18 @@ import java.io.FileReader;
 import java.nio.charset.*;
 
 /**
- * FileManagement class
+ * FileManagement class is responsible for reading files and validating email addresses.
  */
 public class FileManagement {
-    /**
-     * Path to the file
-     */
 
     /**
-     * Constructor
-     * @param path Path to the file
+     * Reads a file and returns its content as a list of strings.
+     * If the file contains email addresses, it validates them before adding to the list.
+     * @param path The path to the file.
+     * @param isEmailAdress A flag indicating whether the file contains email addresses.
+     * @return A list of strings representing the content of the file.
      */
-
-    /**
-     * Read file and return a list of lines
-     * @return list of emails
-     */
-    public List<String> readFile( String path, boolean isEmailAdress) {
-
+    public List<String> readFile(String path, boolean isEmailAdress) {
         List<String> lines = new ArrayList<>();
         try (BufferedReader reader = new BufferedReader(new FileReader(path))) {
             String line;
@@ -34,15 +28,18 @@ public class FileManagement {
                 }else {
                     System.out.println("Invalid email: " + line);
                 }
-
             }
         } catch (IOException e) {
             throw new RuntimeException("Error reading file", e);
         }
-
         return lines;
-
     }
+
+    /**
+     * Validates an email address.
+     * @param emailAddress The email address to validate.
+     * @return A boolean indicating whether the email address is valid.
+     */
     public Boolean emailValidator(String emailAddress) {
         // Vérifie que l'adresse e-mail contient un @.
         if (!emailAddress.contains("@")) {

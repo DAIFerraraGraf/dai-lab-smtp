@@ -105,3 +105,40 @@ public class SMTPProtocol {
 
 }
 
+/*
+
+public class SMTPProtocol {
+    private final int SERVER_PORT = 1025;
+    private final String SERVER_ADDRESS = "0.0.0.0";
+
+    public void sendEmail(Group group, Message message) {
+        try (Socket socket = new Socket(SERVER_ADDRESS, SERVER_PORT);
+             var in = new BufferedReader(new InputStreamReader(socket.getInputStream()));
+             var out = new BufferedWriter(new OutputStreamWriter(socket.getOutputStream()))) {
+
+            sendCommand(out, in, "ehlo " + SERVER_ADDRESS);
+            sendCommand(out, in, "mail from:<" + group.getSender() + ">");
+            group.getRecievers().forEach(receiver -> sendCommand(out, in, "rcpt to:<" + receiver + ">"));
+            sendCommand(out, in, "data");
+            sendCommand(out, in, "From: <" + message.getFrom() + ">\r\nTo: <" + message.getTo() + ">\r\nDate: " + message.getDate() + "\r\nSubject: " + message.getSubject() + "\r\n\r\n" + message.getBody() + "\r\n.\r\n");
+            sendCommand(out, in, "quit");
+
+        } catch (IOException e) {
+            throw new RuntimeException("Error while sending email", e);
+        }
+    }
+
+    private void sendCommand(BufferedWriter out, BufferedReader in, String command) {
+        try {
+            out.write(command + "\r\n");
+            out.flush();
+            String response = in.readLine();
+            if (!response.contains("250") && !response.contains("220") && !response.contains("354")) {
+                throw new RuntimeException("Error in command: " + command);
+            }
+        } catch (IOException e) {
+            throw new RuntimeException("Error while sending command: " + command, e);
+        }
+    }
+}*/
+
