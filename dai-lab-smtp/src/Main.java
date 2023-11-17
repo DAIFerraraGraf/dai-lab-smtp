@@ -8,8 +8,8 @@ public class Main {
         SMTPClient client = new SMTPClient();
 
         // Lire les fichiers de configuration.
-        client.readEmailAdressFiles("src/victims.txt");
-        client.selectMessages("src/jokes.txt");
+        client.readEmailAdressFiles("dai-lab-smtp/src/victims.txt");
+        client.selectMessages("dai-lab-smtp/src/jokes.txt");
 
         // Envoyer les messages.
         client.sendEmails();
