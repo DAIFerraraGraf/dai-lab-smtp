@@ -11,9 +11,8 @@ public class Main {
         client.readEmailAdressFiles("src/victims.txt");
         client.selectMessages("src/jokes.txt");
 
-        // Sélectionner les messages.
+        // Envoyer les messages.
         client.sendEmails();
-
 
     }
 }
