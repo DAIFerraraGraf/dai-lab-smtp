@@ -63,13 +63,14 @@ public class SMTPProtocol {
 
         for (String to : group.getRecievers()) {
             out.write("rcpt to:<" + to + ">\r\n");
-        }
-        out.flush();
-        if (!in.readLine().contains("250")) {
+            out.flush();
+            if (!in.readLine().contains("250")) {
 //            throw "error";
-            System.out.println("error in mailto");
-            return;
+                System.out.println("error in mailto");
+                return;
+            }
         }
+
     }
 
     private void sendContent(BufferedWriter out, BufferedReader in, Message message) throws IOException {
