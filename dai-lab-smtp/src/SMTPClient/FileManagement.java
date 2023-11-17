@@ -13,27 +13,23 @@ public class FileManagement {
     /**
      * Path to the file
      */
-    private String path;
 
     /**
      * Constructor
      * @param path Path to the file
      */
-    public FileManagement(String path) {
-        this.path = path;
-    }
 
     /**
      * Read file and return a list of lines
      * @return list of emails
      */
-    public List<String> readFile() {
+    public List<String> readFile( String path, boolean isEmailAdress) {
 
         List<String> lines = new ArrayList<>();
         try (BufferedReader reader = new BufferedReader(new FileReader(path))) {
             String line;
             while ((line = reader.readLine()) != null) {
-                if (emailValidator(line)){
+                if (emailValidator(line) || !isEmailAdress){
                     lines.add(line);
                 }else {
                     System.out.println("Invalid email: " + line);
