@@ -1,4 +1,4 @@
-package ch.heig.JokesEmail;
+package Jokes;
 
 import java.util.ArrayList;
 import java.util.Date;

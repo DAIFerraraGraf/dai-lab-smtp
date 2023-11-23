@@ -1,4 +1,5 @@
-import ch.heig.JokesEmail.SMTPClient;
+package Jokes;
+
 public class Main {
     public static void main(String[] args) {
         // Créer un client SMTP.

@@ -1,10 +1,9 @@
-package ch.heig.JokesEmail;
+package Jokes;
 
 import java.io.*;
 import java.net.*;
 import java.nio.charset.StandardCharsets;
 import java.util.Date;
-import java.util.List;
 
 
 public class SMTPProtocol {
