@@ -3,6 +3,7 @@ package Jokes;
 import java.io.*;
 import java.net.*;
 import java.nio.charset.StandardCharsets;
+import java.util.Base64;
 import java.util.Date;
 
 
@@ -10,7 +11,7 @@ public class SMTPProtocol {
     private final int SERVER_PORT = 1025;
     private final String SERVER_ADDRESS = "0.0.0.0";
 
-    public void sendEmail(Group group, Message message) {
+    public void sendEmail(String sender, String reciever, Message message) {
         try (Socket socket = new Socket(SERVER_ADDRESS, SERVER_PORT);
              var in = new BufferedReader(new InputStreamReader(socket.getInputStream(), StandardCharsets.UTF_8));
              var out = new BufferedWriter(new OutputStreamWriter(socket.getOutputStream(), StandardCharsets.UTF_8))) {
@@ -18,14 +19,15 @@ public class SMTPProtocol {
             init(in);
 
             String[] commands = sendHello(out, in);
-            sendCommand(out, in, mailFrom(group.getSender()));
-            sendCommand(out, in, rcptTo(group.getRecievers().get(0)));
+            sendCommand(out, in, mailFrom(sender));
+            sendCommand(out, in, rcptTo(reciever));
             sendCommand(out, in, "data");
             sendCommand(out, in, content(message.getFrom(), message.getTo(), message.getDate(), message.getSubject(), message.getBody()));
             quit(out, in);
 
+            System.out.println("Mail sent to : " + reciever);
         } catch (IOException e) {
-            throw new RuntimeException("Error while sending email", e);
+            throw new RuntimeException("Error while sending email to " + reciever + " : ", e);
         }
     }
 
@@ -83,7 +85,8 @@ public class SMTPProtocol {
     }
 
     private String content(String from, String to, Date date, String subject, String body) {
-        return "From: <" + from + ">\r\nTo: <" + to + ">\r\nDate: " + date + "\r\nSubject: " + subject + "\r\n\r\n" + body + "\r\n.";
+        String encodedSubject = "=?UTF-8?B?" + Base64.getEncoder().encodeToString(subject.getBytes(StandardCharsets.UTF_8)) + "?=";
+        return "From: <" + from + ">\r\nTo: <" + to + ">\r\nDate: " + date + "\r\nSubject: " + encodedSubject + "\r\nContent-Type: text/plain; charset=UTF-8\r\n\r\n" + body + "\r\n.";
     }
 }
 

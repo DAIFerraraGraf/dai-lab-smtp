@@ -7,8 +7,6 @@ import java.util.Date;
  * It contains the SMTP from and to addresses, the from and to addresses, the date, the subject, and the body of the message.
  */
 public class Message {
-    private String fromSMTP;
-    private String toSMTP;
     private String from;
     private String to;
     private Date date;
@@ -25,9 +23,7 @@ public class Message {
      * @param subject The subject of the message.
      * @param body The body of the message.
      */
-    public Message(String fromSMTP, String toSMTP, String from, String to, Date date, String subject, String body) {
-        this.fromSMTP = fromSMTP;
-        this.toSMTP = toSMTP;
+    public Message(String from, String to, Date date, String subject, String body) {
         this.from = from;
         this.to = to;
         this.date = date;
@@ -35,21 +31,6 @@ public class Message {
         this.body = body;
     }
 
-    /**
-     * Returns the SMTP from address of this message.
-     * @return The SMTP from address of this message.
-     */
-    public String getFromSMTP() {
-        return fromSMTP;
-    }
-
-    /**
-     * Returns the SMTP to address of this message.
-     * @return The SMTP to address of this message.
-     */
-    public String getToSMTP() {
-        return toSMTP;
-    }
 
     /**
      * Returns the from address of this message.

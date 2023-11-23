@@ -44,7 +44,7 @@ public class SMTPClient {
      * Selects messages from a file.
      * @param path The path to the file containing messages.
      */
-    public void selectMessages(String path) {
+    public void readMessagesFiles(String path) {
         messages = fileManagement.readFileJSON(path);
     }
 
@@ -54,8 +54,14 @@ public class SMTPClient {
      */
     public void sendEmails() {
         for (Group group : groups) {
-            Message message = new Message(group.getSender(), "", " Shakra","Justin", new Date(2020,12,2),"Iphone", getRandomMessage());
-            smtpProtocol.sendEmail(group, message);
+            List<String> messageText = getRandomMessage();
+            System.out.println("---------------------------------------------");
+            System.out.println("Group " + group.getId());
+            System.out.println("Sender  : " + group.getSender());
+            for (String email : group.getRecievers()) {
+                Message message = new Message("Shakira@gmail.com",email, new Date(2020,12,2),messageText.get(0), messageText.get(1));
+                smtpProtocol.sendEmail(group.getSender(),email, message);
+            }
         }
     }
 
@@ -63,12 +69,9 @@ public class SMTPClient {
      * Returns a random message from the list of messages.
      * @return A random message.
      */
-    private String getRandomMessage() {
+    private List<String> getRandomMessage() {
         Random random = new Random();
         int index = random.nextInt(messages.size());
-        return messages.get(index).get(1);
-    }
-    public static void main(String[] args) {
-
+        return messages.get(index);
     }
 }

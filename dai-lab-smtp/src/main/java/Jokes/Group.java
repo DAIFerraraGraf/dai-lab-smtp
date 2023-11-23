@@ -9,6 +9,8 @@ import java.util.List;
 public class Group {
     private String sender;
     private List<String> recievers;
+    private int id;
+    private static int counterID = 0;
 
     /**
      * Constructs a new Group with the specified list of receivers.
@@ -17,10 +19,13 @@ public class Group {
      */
     public Group(List<String> recievers) {
         this.recievers = recievers;
+        this.id = ++counterID;
         if (!recievers.isEmpty())
             this.sender = recievers.get(0);
     }
-
+    public int getId() {
+        return id;
+    }
     /**
      * Returns the sender of this group.
      * @return The sender of this group.

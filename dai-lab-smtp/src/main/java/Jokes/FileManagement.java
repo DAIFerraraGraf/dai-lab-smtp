@@ -40,6 +40,7 @@ public class FileManagement {
         }
         return messagesList;
     }
+
     /**
      * Reads a file and returns its content as a list of strings.
      * If the file contains email addresses, it validates them before adding to the list.
