@@ -53,25 +53,7 @@ public class SMTPClient {
      * Each group receives a random message.
      */
     public void sendEmails() {
-        for (Group group : groups) {
-            List<String> messageText = getRandomMessage();
-            System.out.println("---------------------------------------------");
-            System.out.println("Group " + group.getId());
-            System.out.println("Sender  : " + group.getSender());
-            for (String email : group.getRecievers()) {
-                Message message = new Message("Shakira@gmail.com",email, new Date(2020,12,2),messageText.get(0), messageText.get(1));
-                smtpProtocol.sendEmail(group.getSender(),email, message);
-            }
-        }
+        smtpProtocol.sendEmail(groups, messages);
     }
 
-    /**
-     * Returns a random message from the list of messages.
-     * @return A random message.
-     */
-    private List<String> getRandomMessage() {
-        Random random = new Random();
-        int index = random.nextInt(messages.size());
-        return messages.get(index);
-    }
 }
