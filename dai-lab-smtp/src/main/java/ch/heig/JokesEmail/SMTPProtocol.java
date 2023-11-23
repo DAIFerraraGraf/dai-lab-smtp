@@ -1,9 +1,8 @@
-package SMTPClient;
+package ch.heig.JokesEmail;
 
 import java.io.*;
 import java.net.*;
 import java.nio.charset.StandardCharsets;
-import java.util.List;
 
 public class SMTPProtocol {
     private final int SERVER_PORT = 1025;

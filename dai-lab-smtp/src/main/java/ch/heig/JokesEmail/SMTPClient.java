@@ -1,4 +1,4 @@
-package SMTPClient;
+package ch.heig.JokesEmail;
 
 import java.util.ArrayList;
 import java.util.Date;
@@ -12,7 +12,7 @@ public class SMTPClient {
     private FileManagement fileManagement = new FileManagement();
     private SMTPProtocol smtpProtocol = new SMTPProtocol();
     private List<String> emailAdresses;
-    private List<String> messages;
+    private List<List<String>> messages;
     private List<Group> groups = new ArrayList<>();
 
     /**
@@ -20,7 +20,7 @@ public class SMTPClient {
      * @param path The path to the file containing email addresses.
      */
     public void readEmailAdressFiles(String path) {
-        emailAdresses = fileManagement.readFile(path, true);
+        emailAdresses = fileManagement.readFileTXT(path, true);
         this.formGroups();
     }
 
@@ -45,7 +45,7 @@ public class SMTPClient {
      * @param path The path to the file containing messages.
      */
     public void selectMessages(String path) {
-        messages = fileManagement.readFile(path, false);
+        messages = fileManagement.readFileJSON(path);
     }
 
     /**
@@ -64,8 +64,11 @@ public class SMTPClient {
      * @return A random message.
      */
     private String getRandomMessage() {
-        Random rand = new Random();
-        int randomIndex = rand.nextInt(messages.size());
-        return messages.get(randomIndex);
+        Random random = new Random();
+        int index = random.nextInt(messages.size());
+        return messages.get(index).get(1);
+    }
+    public static void main(String[] args) {
+
     }
 }

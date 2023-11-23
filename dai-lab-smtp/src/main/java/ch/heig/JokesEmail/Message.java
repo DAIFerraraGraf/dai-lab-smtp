@@ -1,4 +1,4 @@
-package SMTPClient;
+package ch.heig.JokesEmail;
 
 import java.util.Date;
 
