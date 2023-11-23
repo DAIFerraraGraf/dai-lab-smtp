@@ -1,10 +1,14 @@
-package SMTPClient;
+package ch.heig.JokesEmail;
 
-import java.util.ArrayList;
-import java.util.List;
-import java.io.*;
+import org.json.JSONArray;
+import org.json.JSONObject;
+import java.nio.file.Files;
+import java.nio.file.Paths;
+import java.io.BufferedReader;
 import java.io.FileReader;
-import java.nio.charset.*;
+import java.io.IOException;
+import java.util.List;
+import java.util.ArrayList;
 
 /**
  * FileManagement class is responsible for reading files and validating email addresses.
@@ -13,12 +17,37 @@ public class FileManagement {
 
     /**
      * Reads a file and returns its content as a list of strings.
+     * @param path The path to the file.
+     * @return A list of strings representing the content of the file.
+     */
+    public List<List<String>> readFileJSON(String path){
+        List<List<String>> messagesList = new ArrayList<>();
+        try {
+            String content = new String(Files.readAllBytes(Paths.get(path)));
+            JSONObject jsonObject = new JSONObject(content);
+            JSONArray messages = jsonObject.getJSONArray("messages");
+            for (int i = 0; i < messages.length(); i++) {
+                JSONObject message = messages.getJSONObject(i);
+                String subject = message.getString("Subject");
+                String body = message.getString("Body");
+                List<String> messageList = new ArrayList<>();
+                messageList.add(subject);
+                messageList.add(body);
+                messagesList.add(messageList);
+            }
+        } catch (Exception e) {
+            throw new RuntimeException("Error reading JSON file", e);
+        }
+        return messagesList;
+    }
+    /**
+     * Reads a file and returns its content as a list of strings.
      * If the file contains email addresses, it validates them before adding to the list.
      * @param path The path to the file.
      * @param isEmailAdress A flag indicating whether the file contains email addresses.
      * @return A list of strings representing the content of the file.
      */
-    public List<String> readFile(String path, boolean isEmailAdress) {
+    public List<String> readFileTXT(String path, boolean isEmailAdress) {
         List<String> lines = new ArrayList<>();
         try (BufferedReader reader = new BufferedReader(new FileReader(path))) {
             String line;
@@ -61,4 +90,5 @@ public class FileManagement {
 
         return true;
     }
+
 }

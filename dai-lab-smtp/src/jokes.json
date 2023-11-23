@@ -1,0 +1,24 @@
+{
+  "messages": [
+    {
+      "Subject": "Premier message",
+      "Body": "Contenu du premier message."
+    },
+    {
+      "Subject": "Deuxième message",
+      "Body": "Contenu du deuxième message."
+    },
+    {
+      "Subject": "Troisième message",
+      "Body": "Contenu du troisième message."
+    },
+    {
+      "Subject": "Quatrième message",
+      "Body": "Contenu du quatrième message."
+    },
+    {
+      "Subject": "Cinquième message",
+      "Body": "Contenu du cinquième message."
+    }
+  ]
+}

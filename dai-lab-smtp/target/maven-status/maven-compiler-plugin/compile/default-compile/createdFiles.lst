@@ -1,0 +1,6 @@
+ch\heig\JokesEmail\FileManagement.class
+Main.class
+ch\heig\JokesEmail\Group.class
+ch\heig\JokesEmail\SMTPProtocol.class
+ch\heig\JokesEmail\Message.class
+ch\heig\JokesEmail\SMTPClient.class
