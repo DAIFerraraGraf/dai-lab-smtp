@@ -28,7 +28,7 @@ public class Main {
         String ANSI_Green = "\u001B[32m";
         String ANSI_Magenta = "\u001B[35m";
         String ANSI_RESET = "\u001B[0m";
-        return "{\n" +
+        return "\n{\n" +
                 ANSI_Magenta  +"  \"messages\" "+  ANSI_RESET +": [\n" +
                 "    {\n" +
                 ANSI_Magenta  +"      \"Subject\" " + ANSI_RESET +":" + ANSI_Green +" \"<subject>\""+ ANSI_RESET +",\n" +
@@ -37,10 +37,14 @@ public class Main {
                 "    {\n" +
                 ANSI_Magenta  +"      \"Subject\" " + ANSI_RESET +":" + ANSI_Green +" \"<subject>\""+ ANSI_RESET +",\n" +
                 ANSI_Magenta  +"      \"Body\"" + ANSI_RESET + ":" + ANSI_Green +" \"<body>\"\n" + ANSI_RESET +
-                "    }\n" +
+                "    },\n" +
                 "    ...\n" +
+                "    {\n" +
+                ANSI_Magenta  +"      \"Subject\" " + ANSI_RESET +":" + ANSI_Green +" \"<subject>\""+ ANSI_RESET +",\n" +
+                ANSI_Magenta  +"      \"Body\"" + ANSI_RESET + ":" + ANSI_Green +" \"<body>\"\n" + ANSI_RESET +
+                "    }\n" +
                 "  ]\n" +
-                "}";
+                "}\n";
     }
 
 }
