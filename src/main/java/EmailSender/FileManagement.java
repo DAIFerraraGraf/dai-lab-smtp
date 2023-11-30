@@ -4,11 +4,9 @@ import org.json.JSONArray;
 import org.json.JSONObject;
 
 import java.io.InputStreamReader;
-import java.nio.charset.Charset;
 import java.nio.file.Files;
 import java.nio.file.Paths;
 import java.io.BufferedReader;
-import java.io.FileReader;
 import java.io.IOException;
 import java.util.List;
 import java.util.ArrayList;
