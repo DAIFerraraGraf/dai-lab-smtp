@@ -9,6 +9,7 @@ import java.io.FileReader;
 import java.io.IOException;
 import java.util.List;
 import java.util.ArrayList;
+import java.nio.charset.StandardCharsets;
 
 /**
  * FileManagement class is responsible for reading files and validating email addresses.
@@ -23,7 +24,7 @@ public class FileManagement {
     public List<List<String>> readFileJSON(String path){
         List<List<String>> messagesList = new ArrayList<>();
         try {
-            String content = new String(Files.readAllBytes(Paths.get(path)));
+            String content = new String(Files.readAllBytes(Paths.get(path)), StandardCharsets.UTF_8);
             JSONObject jsonObject = new JSONObject(content);
             JSONArray messages = jsonObject.getJSONArray("messages");
             for (int i = 0; i < messages.length(); i++) {

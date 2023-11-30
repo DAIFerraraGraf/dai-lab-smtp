@@ -38,7 +38,7 @@ public class SMTPProtocol {
                     System.out.println("Mail send to: " + receiver);
                 }
                 sendCommand(out, in, "data");
-                sendCommand(out, in, content("Shakira@gmail.com", group.getStringReceivers(), new Date(2020, 12, 2), message.get(0), message.get(1)));
+                sendCommand(out, in, content(group.getSender(), group.getStringReceivers(), new Date(2020, 12, 2), message.get(0), message.get(1)));
 
 
             }
@@ -147,8 +147,8 @@ public class SMTPProtocol {
      * @return The content of the email.
      */
     private String content(String from, String to, Date date, String subject, String body) {
-        String encodedSubject = "=?UTF-8?B?" + Base64.getEncoder().encodeToString(subject.getBytes(StandardCharsets.UTF_8)) + "?=";
-        return "From: <" + from + ">\r\nTo: <" + to + ">\r\nDate: " + date + "\r\nSubject: " + encodedSubject + "\r\nContent-Type: text/plain; charset=UTF-8\r\n\r\n" + body + "\r\n.";
+        String encodedSubject = "=?utf-8?B?" + Base64.getEncoder().encodeToString(subject.getBytes(/*StandardCharsets.UTF_8*/)) + "?=";
+        return "Content-Type: text/plain; charset=utf-8\r\n" + "From: <" + from + ">\r\nTo: <" + to + ">\r\nDate: " + date + "\r\nSubject: " + encodedSubject + "\r\n\r\n" + body + "\r\n.";
     }
 
     /**
