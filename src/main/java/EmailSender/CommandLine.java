@@ -14,7 +14,8 @@ public class CommandLine {
         String ANSI_RESET = "\u001B[0m";
         return ANSI_Green + "Usage: java -jar <EmailSender-1.0-jar-with-dependencies.jar> <email_addresses_file.txt> <messages_file.json>\n" +
                 "Use --json to display the JSON structure\n"+
-                "Use --txt to display the txt structure" + ANSI_RESET;
+                "Use --txt to display the txt structure\n" +
+                "Use --man to display the program manual" + ANSI_RESET;
     }
 
     /**
