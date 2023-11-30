@@ -15,14 +15,23 @@ public class Group {
     /**
      * Constructs a new Group with the specified list of receivers.
      * The sender is set to the first receiver in the list.
+     * If the list of receivers is empty or contains less than 2 email addresses,
+     * an error message is printed and the constructor returns null.
+     * The group is assigned an ID which is incremented with each new group.
+     *
      * @param recievers The list of receivers for this group.
      */
     public Group(List<String> recievers) {
-        if (recievers.isEmpty() || recievers.size() < 2)
-            throw new IllegalArgumentException("The list of receivers cannot be empty or contain only 1 person.");
+        if (recievers.isEmpty() || recievers.size() < 2){
+            System.out.println("A group must contain at least 2 email addresses.");
+            System.out.println("If the group is not empty the last email address is not added to a group.");
+            return;
+        }
+        this.sender = recievers.get(0);
+        recievers.remove(0);
         this.recievers = recievers;
         this.id = ++counterID;
-        this.sender = recievers.get(0);
+
     }
     public int getId() {
         return id;

@@ -28,14 +28,24 @@ public class SMTPClient {
      */
     private void formGroups() {
         List<String> emailGroup = new ArrayList<>();
-        for (int i = 0; i < emailAdresses.size(); i++) {
-            emailGroup.add(emailAdresses.get(i));
-            if (i % 5 == 0 && i != 0) {
-                Group group = new Group(emailGroup);
-                groups.add(group);
-                emailGroup.clear();
+            for (int i = 0; i < emailAdresses.size(); i++) {
+                emailGroup.add(emailAdresses.get(i));
+
+                if (emailGroup.size() % 5 == 0) {
+                    Group group = new Group(emailGroup);
+                    groups.add(group);
+                    emailGroup.clear();
+                }else if (i == emailAdresses.size() - 1) {
+                    if(emailGroup.size() > 1) {
+                        Group group = new Group(emailGroup);
+                        groups.add(group);
+                    }else {
+                        System.out.println("The last email address is not added to a group. \n" +
+                                "Because a group must contain at least 2 email addresses.");
+                    }
+                }
+
             }
-        }
     }
 
     /**

@@ -18,7 +18,7 @@ public class FileManagement {
 
     /**
      * Reads a file and returns its content as a list of strings.
-     * @param path The path to the file.
+     * @param path The path to the file. The file must be in JSON format with UTF8 charset.
      * @return A list of strings representing the content of the file.
      */
     public List<List<String>> readFileJSON(String path){

@@ -39,8 +39,7 @@ public class SMTPProtocol {
                 }
                 sendCommand(out, in, "data");
                 sendCommand(out, in, content(group.getSender(), group.getStringReceivers(), new Date(2020, 12, 2), message.get(0), message.get(1)));
-
-
+                System.out.flush();
             }
             quit(out, in);
 
