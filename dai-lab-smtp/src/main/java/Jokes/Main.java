@@ -2,11 +2,12 @@ package Jokes;
 
 public class Main {
     public static void main(String[] args) {
-        if(args[0].equals("--json")){
-            System.out.println(getJSONStructure());
-            System.exit(0);
-        }else if(args[0].equals("--help") || args.length != 2){
+
+        if( args == null|| args.length != 2 || args[0].equals("--help") ){
             System.out.println(getHelp());
+            System.exit(0);
+        }else if(args[0].equals("--json")) {
+            System.out.println(getJSONStructure());
             System.exit(0);
         }
         // Créer un client SMTP.
@@ -17,6 +18,7 @@ public class Main {
 
         // Envoyer les messages.
         client.sendEmails();
+
     }
     public static String getHelp() {
         String ANSI_Green = "\u001B[32m";
