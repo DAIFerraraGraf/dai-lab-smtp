@@ -25,6 +25,7 @@ public class Group {
         if (recievers.isEmpty() || recievers.size() < 2){
             System.out.println("A group must contain at least 2 email addresses.");
             System.out.println("If the group is not empty the last email address is not added to a group.");
+            this.id = -1;
             return;
         }
         this.sender = recievers.get(0);
