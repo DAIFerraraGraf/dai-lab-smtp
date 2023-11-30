@@ -34,7 +34,7 @@ public class SMTPClient {
                 if (emailGroup.size() % 5 == 0) {
                     Group group = new Group(emailGroup);
                     groups.add(group);
-                    emailGroup.clear();
+                    emailGroup = new ArrayList<>();
                 }else if (i == emailAdresses.size() - 1) {
                     if(emailGroup.size() > 1) {
                         Group group = new Group(emailGroup);
