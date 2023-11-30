@@ -24,6 +24,10 @@ public class SMTPClient {
 
     /**
      * Forms groups of 5 email addresses.
+     * If the number of email addresses is not a multiple of 5,
+     * the last group contains the remaining email addresses.
+     * If the number of email addresses is less than 2,
+     * an error message is printed and no group is formed.
      */
     private void formGroups() {
         List<String> emailGroup = new ArrayList<>();
