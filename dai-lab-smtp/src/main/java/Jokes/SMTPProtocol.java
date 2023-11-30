@@ -45,7 +45,7 @@ public class SMTPProtocol {
             quit(out, in);
 
         } catch (IOException e) {
-            throw new RuntimeException("Error while sending email" + " : ", e);
+            throw new RuntimeException("Error while sending email : " + e.getMessage());
         }
     }
 
@@ -56,7 +56,7 @@ public class SMTPProtocol {
      */
     private void init(BufferedReader in) throws IOException {
         if (!in.readLine().contains("220")) {
-            throw new RuntimeException("Error while initializing connection");
+            throw new RuntimeException("Error while confirming the connection");
         }
     }
 
