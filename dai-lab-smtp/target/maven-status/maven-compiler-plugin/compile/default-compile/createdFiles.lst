@@ -2,4 +2,5 @@ Jokes\FileManagement.class
 Jokes\Group.class
 Jokes\Main.class
 Jokes\SMTPProtocol.class
+Jokes\CommandLine.class
 Jokes\SMTPClient.class
