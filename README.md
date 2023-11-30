@@ -1,4 +1,4 @@
-# dai-lab-smtp
+# Dai-lab-smtp
 
 ### Authors Ferrara Justin, Andrea Graf
 
@@ -107,3 +107,37 @@ A small example to run the program with the example files:
 ```bash
 java --jar SpammerEmail-1.0-jar-with-dependencies.jar ./src/victims.txt ./src/jokes.json
 ```
+
+# Dai-lab-smtp Implementation
+## Design
+
+### Main
+The main class is the entry point of the program. It will read the arguments and create an instance of SMTPClient to 
+precise the email file and the json file. It will then call the method sendEmails() to send the emails.
+
+### CommandLine
+The CommandLine class is used to identify the arguments passed to the program. It will print the help message if the
+argument is --help. It will print the information about the json file if the argument is --json. If the arguments are 
+null, it will also print the --help message.
+
+### SMTPClient
+The SMTPClient class is the class that will bring together all the other classes. It will read the files by 
+calling the FileManager class. It will form the groups of senders and receivers by calling. And finally, it will send 
+the emails by calling the SMTPProtocol class with the groups and the jokes.
+
+### SMTPProtocol
+The SMTPProtocol class is the class that will send the emails to the smtp server. It will create a socket and connect 
+to the server. It will then send all the emails to the server and then close the connection for better performance (instead 
+of opening and closing the connection for each email). The class will also handle the response of the server and throw 
+an exception if the response is not valid.
+
+### Group
+The Group class is used to store the sender and the receivers of the email for each group. It also provide a method called
+getPersonInfo(String email) to get the name of the person from the email address and display it correctly in the email.
+
+### FileManagement
+The FileManagement class is used to read the files from a json or a text file. It contains also a method to validate the 
+email address.
+
+## UML Diagram
+![UML Diagram](figures/diagram.png)
