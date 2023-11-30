@@ -1,4 +1,4 @@
-package Jokes;
+package EmailSender;
 
 import java.util.List;
 

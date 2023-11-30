@@ -1,9 +1,7 @@
-package Jokes;
+package EmailSender;
 
 import java.util.ArrayList;
-import java.util.Date;
 import java.util.List;
-import java.util.Random;
 
 /**
  * SMTPClient class is responsible for managing email groups and sending emails.

@@ -1,4 +1,4 @@
-package Jokes;
+package EmailSender;
 
 public class Main {
     public static void main(String[] args) {

@@ -1,4 +1,4 @@
-package Jokes;
+package EmailSender;
 
 import org.json.JSONArray;
 import org.json.JSONObject;

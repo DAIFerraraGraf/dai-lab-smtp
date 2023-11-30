@@ -1,4 +1,4 @@
-package Jokes;
+package EmailSender;
 
 public class CommandLine {
     public static String getHelp() {

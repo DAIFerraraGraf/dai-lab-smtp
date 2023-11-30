@@ -1,4 +1,4 @@
-package Jokes;
+package EmailSender;
 
 import java.io.*;
 import java.net.*;
