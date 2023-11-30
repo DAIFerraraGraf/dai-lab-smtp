@@ -43,4 +43,3 @@ laure.perrin@example.com
 baptiste.thomas@example.com
 charlotte.dubois@example.com
 hugo.robin@example.com
-opo.lopo@example.com

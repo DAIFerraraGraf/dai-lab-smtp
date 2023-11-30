@@ -16,8 +16,7 @@ public class Group {
      * Constructs a new Group with the specified list of receivers.
      * The sender is set to the first receiver in the list.
      * If the list of receivers is empty or contains less than 2 email addresses,
-     * an error message is printed and the constructor returns null.
-     * The group is assigned an ID which is incremented with each new group.
+     * an error message is printed and the Group.id == -1.
      *
      * @param recievers The list of receivers for this group.
      */
