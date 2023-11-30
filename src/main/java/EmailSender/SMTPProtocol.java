@@ -146,7 +146,7 @@ public class SMTPProtocol {
      * @return The content of the email.
      */
     private String content(String from, String to, Date date, String subject, String body) {
-        String encodedSubject = "=?utf-8?B?" + Base64.getEncoder().encodeToString(subject.getBytes(/*StandardCharsets.UTF_8*/)) + "?=";
+        String encodedSubject = "=?utf-8?B?" + Base64.getEncoder().encodeToString(subject.getBytes(StandardCharsets.UTF_8)) + "?=";
         return "Content-Type: text/plain; charset=utf-8\r\n" + "From: <" + from + ">\r\nTo: <" + to + ">\r\nDate: " + date + "\r\nSubject: " + encodedSubject + "\r\n\r\n" + body + "\r\n.";
     }
 
