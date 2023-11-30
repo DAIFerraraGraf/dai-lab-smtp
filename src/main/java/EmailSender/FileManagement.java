@@ -3,6 +3,7 @@ package EmailSender;
 import org.json.JSONArray;
 import org.json.JSONObject;
 
+import java.io.InputStreamReader;
 import java.nio.charset.Charset;
 import java.nio.file.Files;
 import java.nio.file.Paths;
@@ -12,6 +13,7 @@ import java.io.IOException;
 import java.util.List;
 import java.util.ArrayList;
 import java.nio.charset.StandardCharsets;
+import java.io.*;
 
 /**
  * FileManagement class is responsible for reading files and validating email addresses.
@@ -53,7 +55,7 @@ public class FileManagement {
      */
     public List<String> readFileTXT(String path, boolean isEmailAdress) {
         List<String> lines = new ArrayList<>();
-        try (BufferedReader reader = new BufferedReader(new FileReader(path))) {
+        try (var reader = new BufferedReader(new InputStreamReader(new FileInputStream(path), StandardCharsets.UTF_8));) {
             String line;
             while ((line = reader.readLine()) != null) {
                 if (emailValidator(line) || !isEmailAdress){
