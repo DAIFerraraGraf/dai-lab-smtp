@@ -51,6 +51,11 @@ public class Group {
     public List<String> getReceivers() {
         return recievers;
     }
+    /**
+     * Returns a string representation of the receivers of this group.
+     * The email addresses are formatted as "Firstname Lastname <email>", and are separated by commas.
+     * @return A string representation of the receivers of this group.
+     */
     public String getStringReceivers(){
         String result = "";
 
@@ -60,9 +65,20 @@ public class Group {
         }
         return result.substring(0, result.length() - 2);
     }
+    /**
+     * Returns a string representation of the sender of this group.
+     * The email address is formatted as "Firstname Lastname <email>".
+     * @return A string representation of the sender of this group.
+     */
     public String getStringSender(){
         return getPersonInfo(sender);
     }
+    /**
+     * Formats an email address as "Firstname Lastname <email>".
+     * The method extracts the first name and last name from the email address, capitalizes the first letter of each, and then concatenates them with the email address.
+     * @param email The email address to format.
+     * @return The formatted email address.
+     */
     private String getPersonInfo(String email){
         int indexPoint = email.indexOf('.');
         String firstname = email.substring(0, indexPoint).substring(0, 1).toUpperCase() + email.substring(0, indexPoint).substring(1);
