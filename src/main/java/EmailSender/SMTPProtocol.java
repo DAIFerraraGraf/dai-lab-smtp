@@ -38,7 +38,7 @@ public class SMTPProtocol {
                     System.out.println("Mail send to: " + receiver);
                 }
                 sendCommand(out, in, "data");
-                sendCommand(out, in, content(group.getSender(), group.getStringReceivers(), new Date(2020, 12, 2), message.get(0), message.get(1)));
+                sendCommand(out, in, content(group.getStringSender(), group.getStringReceivers(), new Date(2020, 12, 2), message.get(0), message.get(1)));
                 System.out.flush();
             }
             quit(out, in);
@@ -147,7 +147,7 @@ public class SMTPProtocol {
      */
     private String content(String from, String to, Date date, String subject, String body) {
         String encodedSubject = "=?utf-8?B?" + Base64.getEncoder().encodeToString(subject.getBytes(StandardCharsets.UTF_8)) + "?=";
-        return "Content-Type: text/plain; charset=utf-8\r\n" + "From: <" + from + ">\r\nTo: <" + to + ">\r\nDate: " + date + "\r\nSubject: " + encodedSubject + "\r\n\r\n" + body + "\r\n.";
+        return "Content-Type: text/plain; charset=utf-8\r\n" + "From: " + from + "\r\nTo: " + to + "\r\nDate: " + date + "\r\nSubject: " + encodedSubject + "\r\n\r\n" + body + "\r\n.";
     }
 
     /**
@@ -160,4 +160,5 @@ public class SMTPProtocol {
         int index = random.nextInt(messages.size());
         return messages.get(index);
     }
+
 }

@@ -53,10 +53,21 @@ public class Group {
     }
     public String getStringReceivers(){
         String result = "";
+
         for (String reciever : recievers) {
-            result += reciever + ", ";
+
+            result += getPersonInfo(reciever) + ", ";
         }
         return result.substring(0, result.length() - 2);
+    }
+    public String getStringSender(){
+        return getPersonInfo(sender);
+    }
+    private String getPersonInfo(String email){
+        int indexPoint = email.indexOf('.');
+        String firstname = email.substring(0, indexPoint).substring(0, 1).toUpperCase() + email.substring(0, indexPoint).substring(1);
+        String lastname = email.substring(indexPoint + 1, email.indexOf('@')).substring(0, 1).toUpperCase() + email.substring(indexPoint + 1, email.indexOf('@')).substring(1);
+        return firstname + " " + lastname + " <" + email + ">";
     }
 
     /**

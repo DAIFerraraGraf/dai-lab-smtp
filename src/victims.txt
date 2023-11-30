@@ -19,13 +19,13 @@ julien.robin@example.com
 mathieu.laurent@example.com
 nathalie.martin@example.com
 gabriel.durand@example.com
-chloé.lambert@example.com
+chloe.lambert@example.com
 lucas.roberts@example.com
 marie-paule.perrin@example.com
-rémy.thomas@example.com
+remy.thomas@example.com
 isabelle.dubois@example.com
 maxime.robin@example.com
-solène.dupont@example.com
+solene.dupont@example.com
 romain.gauthier@example.com
 valentine.dufour@example.com
 benjamin.lambert@example.com
@@ -36,7 +36,7 @@ caroline.dubois@example.com
 adrien.robin@example.com
 alexandre.laurent@example.com
 olivia.martin@example.com
-raphaël.durand@example.com
+raphael.durand@example.com
 emilie.lambert@example.com
 simon.roberts@example.com
 laure.perrin@example.com
