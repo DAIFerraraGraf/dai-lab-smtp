@@ -31,15 +31,15 @@ public class SMTPProtocol {
                 System.out.println("Group " + group.getId());
                 System.out.println("Sender  : " + group.getSender());
                 List<String> message = getRandomMessage(messages);
-                for(String reciever : group.getRecievers()){
-                    String[] commands = sendHello(out, in);
-                    sendCommand(out, in, mailFrom(group.getSender()));
-                    sendCommand(out, in, rcptTo(reciever));
-                    sendCommand(out, in, "data");
-                    sendCommand(out, in, content("Shakira@gmail.com", reciever, new Date(2020,12,2), message.get(0), message.get(1)));
-                    System.out.println("Mail sent to : " + reciever);
-
+                String[] commands = sendHello(out, in);
+                sendCommand(out, in, mailFrom(group.getSender()));
+                for (String receiver : group.getReceivers()) {
+                    sendCommand(out, in, rcptTo(receiver));
+                    System.out.println("Mail send to: " + receiver);
                 }
+                sendCommand(out, in, "data");
+                sendCommand(out, in, content("Shakira@gmail.com", group.getStringReceivers(), new Date(2020, 12, 2), message.get(0), message.get(1)));
+
 
             }
             quit(out, in);
@@ -132,7 +132,9 @@ public class SMTPProtocol {
      * @return The rcpt to command.
      */
     private String rcptTo(String receiver) {
+
         return "rcpt to:<" + receiver + ">";
+
     }
 
     /**

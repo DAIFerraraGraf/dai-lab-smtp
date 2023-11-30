@@ -18,10 +18,11 @@ public class Group {
      * @param recievers The list of receivers for this group.
      */
     public Group(List<String> recievers) {
+        if (recievers.isEmpty() || recievers.size() < 2)
+            throw new IllegalArgumentException("The list of receivers cannot be empty or contain only 1 person.");
         this.recievers = recievers;
         this.id = ++counterID;
-        if (!recievers.isEmpty())
-            this.sender = recievers.get(0);
+        this.sender = recievers.get(0);
     }
     public int getId() {
         return id;
@@ -38,8 +39,15 @@ public class Group {
      * Returns the list of receivers of this group.
      * @return The list of receivers of this group.
      */
-    public List<String> getRecievers() {
+    public List<String> getReceivers() {
         return recievers;
+    }
+    public String getStringReceivers(){
+        String result = "";
+        for (String reciever : recievers) {
+            result += reciever + ", ";
+        }
+        return result.substring(0, result.length() - 2);
     }
 
     /**
