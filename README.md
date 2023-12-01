@@ -16,7 +16,14 @@ which is the receiver, we will use the following convention: the first line of t
 lines are the receivers. We're calling this a group (1 sender and 4 receivers).Each receiver will receive a joke but the 
 joke are the same for receivers in the same group. The sender will not receive any joke.
 
+The files are utf-8 encoded. The program will read the files and send the emails also under utf-8 encoding due to the 
+smtp standard (for the subject and the body of the email).
+
 The jokes are picked randomly from the json file.
+
+## Default configuration
+The default configuration is to connect to the server in localhost on port 1025 for using the MOCK smtp server described
+below.
 
 ## MOCK SMTP server
 The command to run the docker container:
