@@ -7,11 +7,11 @@ import java.util.List;
  * SMTPClient class is responsible for managing email groups and sending emails.
  */
 public class SMTPClient {
-    private FileManagement fileManagement = new FileManagement();
-    private SMTPProtocol smtpProtocol = new SMTPProtocol();
+    private final FileManagement fileManagement = new FileManagement();
+    private final SMTPProtocol smtpProtocol = new SMTPProtocol();
     private List<String> emailAdresses;
     private List<List<String>> messages;
-    private List<Group> groups = new ArrayList<>();
+    private final List<Group> groups = new ArrayList<>();
 
     /**
      * Reads email addresses from a file and forms groups.

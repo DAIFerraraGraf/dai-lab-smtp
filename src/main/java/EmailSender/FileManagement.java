@@ -26,7 +26,7 @@ public class FileManagement {
     public List<List<String>> readFileJSON(String path){
         List<List<String>> messagesList = new ArrayList<>();
         try {
-            String content = new String(Files.readAllBytes(Paths.get(path)), StandardCharsets.UTF_8);
+            String content = Files.readString(Paths.get(path));
             JSONObject jsonObject = new JSONObject(content);
             JSONArray messages = jsonObject.getJSONArray("messages");
             for (int i = 0; i < messages.length(); i++) {
@@ -88,11 +88,7 @@ public class FileManagement {
         String[] parts = emailAddress.split("@");
         String domain = parts[1];
 
-        if (!domain.matches("^[a-zA-Z0-9-]+\\.[a-zA-Z0-9-]+$")) {
-            return false;
-        }
-
-        return true;
+        return domain.matches("^[a-zA-Z0-9-]+\\.[a-zA-Z0-9-]+$");
     }
 
 }

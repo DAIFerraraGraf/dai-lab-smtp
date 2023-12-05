@@ -9,7 +9,7 @@ import java.util.List;
 public class Group {
     private String sender;
     private List<String> recievers;
-    private int id;
+    private final int id;
     private static int counterID = 0;
 
     /**
@@ -57,11 +57,10 @@ public class Group {
      * @return A string representation of the receivers of this group.
      */
     public String getStringReceivers(){
-        String result = "";
+        StringBuilder result = new StringBuilder();
 
         for (String reciever : recievers) {
-
-            result += getPersonInfo(reciever) + ", ";
+            result.append(getPersonInfo(reciever)).append(", ");
         }
         return result.substring(0, result.length() - 2);
     }
@@ -82,7 +81,8 @@ public class Group {
     private String getPersonInfo(String email){
         int indexPoint = email.indexOf('.');
         String firstname = email.substring(0, indexPoint).substring(0, 1).toUpperCase() + email.substring(0, indexPoint).substring(1);
-        String lastname = email.substring(indexPoint + 1, email.indexOf('@')).substring(0, 1).toUpperCase() + email.substring(indexPoint + 1, email.indexOf('@')).substring(1);
+        String substring = email.substring(indexPoint + 1, email.indexOf('@'));
+        String lastname = substring.substring(0, 1).toUpperCase() + substring.substring(1);
         return firstname + " " + lastname + " <" + email + ">";
     }
 

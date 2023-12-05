@@ -16,13 +16,13 @@ public class Main {
             System.out.println(CommandLine.getManPage());
             System.exit(0);
         }
-        // Créer un client SMTP.
+        // Create an SMTPClient.
         SMTPClient client = new SMTPClient();
-        // Lire les fichiers de configuration.
+        // Read configuration files.
         client.readEmailAdressFiles(args[0]);
         client.readMessagesFiles(args[1]);
 
-        // Envoyer les messages.
+        // Send emails.
         client.sendEmails();
     }
 
