@@ -13,10 +13,10 @@ We use Meaven to compile the program and create the jar file. The jar file is lo
 
 The senders and the receivers of the emails are stored in a text file. In order to determine which is the sender and 
 which is the receiver, we will use the following convention: the first line of the file is the sender and the 4 next 
-lines are the receivers. We're calling this a group (1 sender and 4 receivers).Each receiver will receive a joke but the 
-joke are the same for receivers in the same group. The sender will not receive any joke.
+lines are the receivers. We're calling this a group (1 sender and 4 receivers).Each receiver will receive a message but the 
+message are the same for receivers in the same group. The sender will not receive any message.
 
-The jokes are picked randomly from the json file.
+The messages are picked randomly from the json file.
 
 ## MOCK SMTP server
 The command to run the docker container:
@@ -41,7 +41,7 @@ public class SMTPProtocol() {
 The victim's email address and the jokes are stored in different files. The program will read the file and send the
 email to the smtp server.
 ### Emails.txt
-The victim's email address are stored in a text file where each line are another email address.
+The victim's email address are stored in a text file where each line are another email address. If the line is not a valid email address, it will not be taken into account.
 
 An example of the email file:
 ```
@@ -50,7 +50,7 @@ marie.martin@example.com
 pierre.durand@example.com
 ```
 ### Content.json
-The jokes are stored in a json file. The file contain a single key-value pair. The key is "messages" and the value is an array of objects. 
+The messages are stored in a json file. The file contain a single key-value pair. The key is "messages" and the value is an array of objects. 
 Each object in the array represents an email message with two properties: "Subject" and "Body". Subject is the subject of
 the email and Body is the content of the email.
 
@@ -87,7 +87,7 @@ mvn clean package
 
 Run the program with as argument the path to the email file and the path to the json file:
 ```bash
-java --jar SpammerEmail-1.0-jar-with-dependencies.jar emails.txt content.json
+java --jar SpammerEmail-1.0-jar-with-dependencies.jar <emails.txt> <content.json>
 ```
 
 ## Help
@@ -101,7 +101,10 @@ Information about the json file:
 ```bash
 java --jar SpammerEmail-1.0-jar-with-dependencies.jar --json
 ```
-
+Man page:
+```bash
+java --jar SpammerEmail-1.0-jar-with-dependencies.jar --man
+```
 ## Example
 A small example to run the program with the example files:
 ```bash
