@@ -1,6 +1,6 @@
 # Dai-lab-smtp
 
-### Authors Ferrara Justin, Andrea Graf
+#### Authors: Ferrara Justin and Andrea Graf
 
 ## Introduction
 
@@ -21,12 +21,22 @@ smtp standard (for the subject and the body of the email).
 
 The messages are picked randomly from the json file.
 
+## Getting started
+To run the program, you need to have installed this software:
+- Java 21
+- Maven
+- Docker (to run the MOCK smtp server)
+
 ## Default configuration
 The default configuration is to connect to the server in localhost on port 1025 for using the MOCK smtp server described
 below.
 
 ## MOCK SMTP server
-The command to run the docker container:
+In our case, we will use as the default configuration a MOCK smtp server called MailDev running on port 1025. We use a 
+MOCK smtp server to avoid sending real emails to real people or spamming them. It's also easier to test the program with
+a MOCK server and to see the emails sent. You can also reset more easily the MOCK server to test the program again or in
+case of error due to the fact that the MOCK server is running in a docker container.
+The command to run the MOCK server inside the docker container:
 ```bash
 docker run -d -p 1080:1080 -p 1025:1025 maildev/maildev
 ```
@@ -90,10 +100,13 @@ Use meaven to compile the program and create the jar file.
 ```bash
 mvn clean package
 ```
+Run this command in the root folder of the project. The jar file will be in the target folder.
+This command will run the tests, clean the target folder, compile the program and create the jar file inside the target
+folder.
 
 ## Run the program
 
-Run the program with as argument the path to the email file and the path to the json file:
+Run the program with as argument the path to the email file and the path to the json (content) file:
 ```bash
 java --jar SpammerEmail-1.0-jar-with-dependencies.jar <emails.txt> <content.json>
 ```
@@ -152,3 +165,7 @@ email address.
 
 ## UML Diagram
 ![UML Diagram](figures/diagram.png)
+
+## Example of dialog between the client and the server
+The following figure shows the dialog between the client and the server to send an email for one group.
+![Wireshark capture](figures/wireshark.png)
