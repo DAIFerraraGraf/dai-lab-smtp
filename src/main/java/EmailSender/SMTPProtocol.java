@@ -26,12 +26,12 @@ public class SMTPProtocol {
              var out = new BufferedWriter(new OutputStreamWriter(socket.getOutputStream(), StandardCharsets.UTF_8))) {
 
             init(in);
+            String[] commands = sendHello(out, in);
             for (Group group : groups) {
                 System.out.println("---------------------------------------------");
                 System.out.println("Group " + group.getId());
                 System.out.println("Sender  : " + group.getSender());
                 List<String> message = getRandomMessage(messages);
-                String[] commands = sendHello(out, in);
                 sendCommand(out, in, mailFrom(group.getSender()));
                 for (String receiver : group.getReceivers()) {
                     sendCommand(out, in, rcptTo(receiver));
